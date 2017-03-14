@@ -19,9 +19,24 @@ require './app/helpers/users_rights_helper.rb'
 
 # models
 require './app/models/user.rb'
+require './app/models/instance.rb'
+require './app/models/service.rb'
+require './app/models/database.rb'
+require './app/models/dependency.rb'
+require './app/models/sirelation.rb'
+require './app/models/ssrelation.rb'
+require './app/models/sdrelation.rb'
+require './app/models/idrelation.rb'
 
 # controllers
 require './app/controllers/user_controller.rb'
+require './app/controllers/instance_controller.rb'
+require './app/controllers/database_controller.rb'
+require './app/controllers/dependency_controller.rb'
+require './app/controllers/sirelation_controller.rb'
+require './app/controllers/ssrelation_controller.rb'
+require './app/controllers/sdrelation_controller.rb'
+require './app/controllers/idrelation_controller.rb'
 
 config_file 'config/secrets.yml'
 
@@ -51,7 +66,10 @@ get '/' do
     content_type :json
     res.to_json
 end
-
+get '/instance' do
+  @instances = Instance.all
+  erb:view
+end
 after do
     ActiveRecord::Base.connection.close
 end

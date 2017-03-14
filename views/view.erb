@@ -1,0 +1,12 @@
+<h3>All instances</h3>
+<ul>
+<% @instances.each do |instance| %>
+	<li>
+		<%= (instance.ip_address).to_json %>
+	</li>
+	<li>
+		<%= (instance.N_services).to_json %>
+	</li>
+<% end %>
+</ul>
+<a href="/">Back to Home</a>
