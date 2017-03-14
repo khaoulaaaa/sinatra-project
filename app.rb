@@ -8,7 +8,6 @@ require 'digest/sha1'
 require 'jwt'
 require "awesome_print"
 require 'rollbar'
-require 'sinatra/activerecord/rake'
 
 set :bind, '0.0.0.0'
 

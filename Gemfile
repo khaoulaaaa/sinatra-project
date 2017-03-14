@@ -12,6 +12,7 @@ gem 'tux'
 gem 'jwt'
 gem 'awesome_print'
 gem 'rollbar'
+gem 'puma'
 
 
 group :development do
