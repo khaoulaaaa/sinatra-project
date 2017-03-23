@@ -10,7 +10,7 @@ class Database < ActiveRecord::Base
   end
 
   def update(database)
-    database.slice!("db_id", "type", "N_tables")
+    database.slice!("db_id", "db_type", "N_tables")
     database.each do |key, value|
       send("#{key}=", value)
     end

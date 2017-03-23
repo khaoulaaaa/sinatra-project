@@ -37,6 +37,8 @@ require './app/controllers/sirelation_controller.rb'
 require './app/controllers/ssrelation_controller.rb'
 require './app/controllers/sdrelation_controller.rb'
 require './app/controllers/idrelation_controller.rb'
+#require './app/controllers/pony_controller.rb'
+
 
 config_file 'config/secrets.yml'
 
@@ -65,6 +67,25 @@ get '/' do
     }
     content_type :json
     res.to_json
+end
+post '/sendemail' do 
+  Pony.options = {
+  :subject => "Some Subject",
+  :body => "This is the body.",
+  :via => :smtp,
+  :via_options => {
+    :address              => 'smtp.gmail.com',
+    :port                 => '587',
+    :enable_starttls_auto => true,
+    :user_name            => 'noreply@cdubs-awesome-domain.com',
+    :password             => ENV["SMTP_PASSWORD"],
+    :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+    :domain               => "localhost.localdomain"
+  }
+} 
+   Pony.mail(:to => 'khaoula.mohamed@ensi-uma.tn', :from => 'mohamedkhaoula2@gmail.com', :subject => 'hi', :body => 'Hello there.', :via => :smtp)
+  redirect '/'
+  
 end
 get '/instance' do
   @instances = Instance.all

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170313100104) do
 
   create_table "databases", force: :cascade do |t|
     t.string  "db_id"
-    t.string  "type"
+    t.string  "db_type"
     t.integer "N_tables"
   end
 
@@ -36,14 +36,6 @@ ActiveRecord::Schema.define(version: 20170313100104) do
   create_table "instances", force: :cascade do |t|
     t.string  "ip_address"
     t.integer "N_services"
-  end
-
-  create_table "processes", force: :cascade do |t|
-    t.string "process_id"
-    t.string "service_name"
-    t.string "language"
-    t.string "status"
-    t.date   "last_update"
   end
 
   create_table "sdrelations", force: :cascade do |t|
